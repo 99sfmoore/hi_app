@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.create(student_params)
+    render 'show'
   end
 
   def show
