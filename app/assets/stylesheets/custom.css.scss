@@ -1,6 +1,13 @@
 @import "bootstrap";
 
 /* universal */
+$med-green: #609246;
+$darker-green: #448330;
+$color-3: #3b7e2f;
+$yellow-green: #a5c433;
+$light-lime: #c3d682;
+$other-green: #77a534;
+$lime: #9dc53b;
 
 
 
@@ -24,3 +31,30 @@ textarea {
   font-weight: bold;
 }
 
+.med-green {
+  color: $med-green;
+}
+.dark-green {
+  color: $darker-green;
+}
+
+.navbar-default {
+  background-color: $lime;
+  .navbar-nav >li > a{
+    color: white;
+  }
+  .navbar-nav >li > a:hover{
+    color: gray;
+  }
+  .navbar-brand{
+    color: white;
+  }
+  a.navbar-brand:hover{
+    color: $gray;
+  }
+}
+
+.btn-primary {
+  background-color: $med-green;
+  border-color: $med-green;  //change for depth?
+}

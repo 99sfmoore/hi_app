@@ -1,9 +1,9 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class = "container">
-    <%= link_to "SimplfiAid", "#", class: "navbar-brand"%>
+    <%= link_to image_tag('logo-small.png'), "#"%>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Nav Item", "#"%></li>
-        <li><%= link_to "Nav Item", "#"%></li>
+        <li><%= link_to "New Package", new_student_semester_package_path(@student)%></li>
+        <li><%= link_to "Compare Packages", student_semester_packages_path(@student)%></li>
       </ul>
   </div>
 </div>

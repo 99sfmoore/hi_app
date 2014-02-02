@@ -1,0 +1,7 @@
+<% if p.college_name == "NYU" %>
+  <%= link_to image_tag('nyu.png'), [s,p] %>
+<% elsif p.college_name == "Cornell" %>
+  <%= link_to image_tag('cornell.png'), [s,p]%>
+<% elsif p.college_name == "SUNY-Binghamton" %>
+  <%= link_to image_tag('suny-b.png'), [s,p]%>
+<% end %>

@@ -1,9 +1,10 @@
 <% provide(:title, @student.full_name) %>
-<h1> <%= @student.full_name %></h1>
+<h1 class="dark-green"> <%= @student.full_name %></h1>
 <div class="row">
     <p>Email: <%= @student.email %></p>
     <%= link_to "Add Aid Package", new_student_semester_package_path(@student), class: "btn btn-primary" %>
 </div>
+
 <% @student.semester_packages.each do |p| %>
   <div class="col-sm-4">
     <%= render 'compare_display', s: @student, p: p %>

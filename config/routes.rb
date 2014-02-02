@@ -5,6 +5,9 @@ HiApp::Application.routes.draw do
       member do
         get :four_year_cost
       end
+      collection do
+        post :change_time
+      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

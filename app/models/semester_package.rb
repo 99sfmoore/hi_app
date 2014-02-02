@@ -61,7 +61,7 @@ class SemesterPackage < ActiveRecord::Base
   end
 
   def my_net_cost_4
-    my_coa_4 - (four_year(school_grant)+(pell+state_grant+other_scholarship)*4)
+    my_coa_4 - (four_year(school_grant)+(pell+state_grant+my_other_scholarship)*4)
   end
 
   def total_sub_loans_4
@@ -121,8 +121,8 @@ class SemesterPackage < ActiveRecord::Base
   end
 
   def calc_monthly_payment(principal, rate, years)
-    i = rate/12
-    n = years*12
+    i = rate/12.0
+    n = years*12.0
     (i*principal*(1+i)**n)/(((1+i)**n)-1)
   end
 
