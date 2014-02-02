@@ -1,0 +1,23 @@
+<% provide(:title, @student.full_name) %>
+
+<h1 class="med-green">Welcome <%=@student.first_name %>!</h1>
+<h3 class="dark-green">What do you want to do today?</h3>
+
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-1 lime-box">
+    <h3><%= link_to "I just got an admissions letter & financial package - I want to find out what it means", edit_student_semester_package_path(@student,SemesterPackage.find(11)) %></h3>
+  </div>
+  <div class="col-sm-3 col-sm-offset-2 other-green-box">
+    <h3>I want to compare my offers</h3>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-1 dark-green-box">
+    <h3>I want to research scholarships and loans</h3>
+  </div>
+  <div class="col-sm-3 col-sm-offset-2 med-green-box">
+    <h3>I want to learn more about financial planning</h3>
+  </div>
+</div>

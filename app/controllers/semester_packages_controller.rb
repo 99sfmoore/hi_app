@@ -22,7 +22,7 @@ class SemesterPackagesController < ApplicationController
 
   def index
     @student = Student.find(params[:student_id])
-    @time = 20.0
+    @time = 20
   end
 
   def show

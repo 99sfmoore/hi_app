@@ -16,6 +16,10 @@ class StudentsController < ApplicationController
   def index
   end
 
+  def welcome
+    @student = Student.find(params[:id])
+  end
+
   private
     def student_params
       params.require(:student).permit(:ssn,

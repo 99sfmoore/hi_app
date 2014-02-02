@@ -5,54 +5,60 @@
 <table class="table">
   <tr>
     <th></th>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
     <th align="right"><%= render 'shared/college_picture', s: @student, p: p %></th>
     <% end %>
   <tr>
   <tr>
     <td class="h5">Cost of Attendance</td>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
       <td class="h5" align="right"><%=number_to_currency(p.my_coa_4)%></td>
     <% end %>
   </tr>
   <tr>
     <td class="h5">Your Net Cost (after Grants)</td>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
       <td class="h5" align="right"><%=number_to_currency(p.my_net_cost_4)%></td>
     <% end %>
   </tr>
   <tr>
     <td class="h5">Federal Loans & Work-Study</td>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
       <td class="h5" align="right">(<%=number_to_currency(p.total_sub_loans_4+p.my_work_study*4)%>)</td>
     <% end %>
   </tr>
   <tr>
+    <td class="h5">Family Contribution</td>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
+      <td class="h5" align="right">(<%=number_to_currency(p.my_family_contribution*4)%>)</td>
+    <% end %>
+  </tr>
+  <tr>
     <td class="h5">Your Unmet Need (Private Loans)</td>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
       <td class="h5" align="right"><%=number_to_currency(p.my_unmet_need_4)%></td>
     <% end %>
   </tr>
   <tr>
     <td class="h5">Projected Debt at Graduation</td>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
       <td class="h5" align="right"> <%=number_to_currency(p.my_debt_balance)%></td>
     <% end %>
   </tr>
   <tr>
     <td class="h3 med-green">Monthly Payment for <%=@time%> years</td>
-    <% @student.semester_packages.each do |p| %>
+    <% @student.semester_packages.sort_by{|x|x.ordering}.reverse.each do |p| %>
       <td class="h3 med-green" align="right"> <%=number_to_currency(p.my_monthly_payment(@time))%></td>
     <% end %>
   </tr>  
 </table>
   <% if @time == 20 %>
-    <% @time = 15 %>
+    <% @time = 30 %>
   <% else %>
     <% @time = 20 %>
   <% end %>
 
 
 <%= form_tag change_time_student_semester_packages_path(@student) %>
-<h3 class="dark-green"> Click on a school to see how your decisions can impact your payments.  One decision is how long you take to pay down your debt.  What if you paid it off in <%=text_field_tag :time, @time, size: "1" %> years? <%=submit_tag "Change Timeframe", class: "btn btn-small btn-primary"%></h3>
+<h3 class="dark-green"> Click on a school to see how your decisions can impact your payments.  One decision is how long you take to pay down your debt.  What if you paid it off in <%=text_field_tag :time, @time, size: "2" %> years? <%=submit_tag "Change Timeframe", class: "btn btn-small btn-primary"%></h3>
 

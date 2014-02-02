@@ -1,5 +1,6 @@
 class SemesterPackage < ActiveRecord::Base
   belongs_to :student
+  default_scope :order => "ordering"
 
   def coa
     tuition_and_fees+housing_meals+books+transportation+other

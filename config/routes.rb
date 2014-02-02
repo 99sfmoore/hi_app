@@ -1,6 +1,9 @@
 HiApp::Application.routes.draw do
 
   resources :students do
+    member do
+      get :welcome
+    end
     resources :semester_packages do
       member do
         get :four_year_cost

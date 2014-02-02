@@ -13,10 +13,15 @@ $lime: #9dc53b;
 
 html {
   overflow-y: scroll;
+  
+}
+
+html * {
+  font-family: Helvetica !important;
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 100px;
 }
 
 section {
@@ -26,6 +31,8 @@ section {
 textarea {
   resize: vertical;
 }
+
+
 
 .strong {
   font-weight: bold;
@@ -38,13 +45,46 @@ textarea {
   color: $darker-green;
 }
 
-.navbar-default {
+.lime-box {
   background-color: $lime;
+  border-radius: 25px;
+  height: 200px;
+  a {color: white;}
+  color: white;
+}
+
+.other-green-box {
+  background-color: $other-green;
+  border-radius: 25px;
+  height: 200px;
+  a {color: white;}
+  color: white;
+}
+
+.dark-green-box {
+  background-color: $darker-green;
+  border-radius: 25px;
+  height: 200px;
+  a {color: white;}
+  color: white;
+}
+
+.med-green-box {
+  background-color: $med-green;
+  border-radius: 25px;
+  height: 200px;
+  a {color: white;}
+  color: white;
+}
+
+.navbar-default {
+  background-color: white;
+  border-color: white;
   .navbar-nav >li > a{
-    color: white;
+    color: $med-green;
   }
   .navbar-nav >li > a:hover{
-    color: gray;
+    color: $darker-green;
   }
   .navbar-brand{
     color: white;
