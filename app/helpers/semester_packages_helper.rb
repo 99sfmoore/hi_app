@@ -1,0 +1,2 @@
+module SemesterPackagesHelper
+end

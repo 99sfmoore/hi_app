@@ -6,11 +6,14 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.create(student_params)
-    render 'show'
+    redirect_to @student
   end
 
   def show
     @student = Student.find(params[:id])
+  end
+
+  def index
   end
 
   private

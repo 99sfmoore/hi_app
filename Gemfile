@@ -11,6 +11,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'd3-rails'
 # gem 'protected_attributes'
 
 group :development, :test do

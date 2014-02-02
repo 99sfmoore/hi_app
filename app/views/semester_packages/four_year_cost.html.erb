@@ -1,0 +1,150 @@
+<% provide(:title, @student.full_name) %>
+<h1> <%= link_to @student.full_name, @student %><br>
+<small><%= link_to @package.college_name, [@student, @package] %></small></h1>
+<br>
+Four Year Totals
+<table class="table table-condensed">
+  <tr>
+    <td class="strong">Cost of Attendance</td>
+    <td class="strong" align="right">Projected <%=@package.college_name %> estimates</td>
+    <td class="strong" align="right">Your projected estimates</td>
+  </tr>
+  <tr>
+    <td>Tuition & Fees</td>
+    <td align="right" align="right"><%=number_to_currency(four_year(@package.tuition_and_fees))%></td>
+    <td align="right" align="right"><%=number_to_currency(four_year(@package.tuition_and_fees))%></td>
+  </tr>
+  <tr>
+    <td>Housing & Meals</td>
+    <td align="right"><%=number_with_precision(four_year(@package.housing_meals), precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(four_year(@package.my_housing), precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Books</td>
+    <td align="right"><%=number_with_precision(four_year(@package.books), precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(four_year(@package.my_books), precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Transportation</td>
+    <td align="right"><%=number_with_precision(four_year(@package.transportation), precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(four_year(@package.my_transportation), precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Other Educational Costs</td>
+    <td align="right"><%=number_with_precision(four_year(@package.other), precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(four_year(@package.my_other), precision: 2, delimiter: ",")%></td>
+  </tr>
+  </tr>
+  <tr>
+    <td class="strong">Total Cost of Attendance</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.coa_4)%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.my_coa_4)%></td>
+  </tr>
+  </tr>
+  <tr>
+    <td>School Grants</td>
+    <td align="right"><%=number_with_precision(four_year(@package.school_grant), precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(@package.school_grant, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Pell Grant</td>
+    <td align="right"><%=number_with_precision(4*@package.pell, precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(4*@package.pell, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>State Grant</td>
+    <td align="right"><%=number_with_precision(4*@package.state_grant, precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(4*@package.state_grant, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Other Scholarships</td>
+    <td align="right"><%=number_with_precision(4*@package.other_scholarship, precision: 2, delimiter: ",")%></td>
+     <td align="right"><%=number_with_precision(4*@package.other_scholarship, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td class="strong">Net Cost</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.net_cost_4)%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.my_net_cost_4)%></td>
+  </tr>
+  <tr>
+    <td>Work Study</td>
+    <td align="right"><%=number_with_precision(@package.work_study*4, precision: 2, delimiter: ",")%></td>
+     <td align="right"><%=number_with_precision(@package.my_work_study*4, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Perkins Loan</td>
+    <td align="right"><%=number_with_precision(@package.perkins*4, precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(@package.perkins*4, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Direct Federal Subsidized Loan (Stafford)</td>
+     <td align="right"><%=number_with_precision(@package.sub_stafford*4, precision: 2, delimiter: ",")%></td>
+     <td align="right"><%=number_with_precision(@package.sub_stafford*4, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Direct Federal Unsubsidized Loan (Stafford)</td>
+    <td align="right"><%=number_with_precision(@package.unsub_stafford*4, precision: 2, delimiter: ",")%></td>
+    <td align="right"><%=number_with_precision(@package.unsub_stafford*4, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td class="strong">Total Loans</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.total_sub_loans_4)%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.total_sub_loans_4)%></td>
+  </tr>
+  <tr>
+    <td>Parental Contribution</td>
+    <td align="right"><%=number_to_currency(@package.family_contribution*4)%></td>
+    <td align="right"><%=number_to_currency(@package.my_family_contribution*4)%></td>
+  <tr>
+    <td class="strong">Need Not Met (Private Loan)</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.unmet_need_4)%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.my_unmet_need_4)%></td>
+  </tr>
+  <tr>
+    <td class="strong">Private Loan Accrued Interest</td>
+    <td class="strong" align="right"><%=number_with_precision(@package.private_loan_interest, precision: 2, delimiter: ",")%></td>
+    <td class="strong" align="right"><%=number_with_precision(@package.my_private_loan_interest, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td class="strong">Total Public Loans</td>
+    <td class="strong" align="right"><%=number_with_precision(@package.total_sub_loans_4, precision: 2, delimiter: ",")%></td>
+    <td class="strong" align="right"><%=number_with_precision(@package.total_sub_loans_4, precision: 2, delimiter: ",")%></td>
+  <tr>
+    <td class="strong">Public Loans Accrued Interest</td>
+    <td class="strong" align="right"><%=number_with_precision(@package.public_interest, precision: 2, delimiter: ",")%></td>
+    <td class="strong" align="right"><%=number_with_precision(@package.public_interest, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td class="strong">Total Debt Balance at Graduation</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.debt_balance)%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.my_debt_balance)%></td>
+  </tr>
+  <tr>
+    <td class="strong">Projected Monthly Payment (20 years)</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.monthly_payment(20))%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.my_monthly_payment(20))%></td>
+  </tr>
+  <tr>
+    <td class="strong">Projected Monthly Payment (15 years)</td>
+    <td class="strong" align="right"><%=number_to_currency(@package.monthly_payment(15))%></td>
+    <td class="strong" align="right"><%=number_to_currency(@package.my_monthly_payment(15))%></td>
+  </tr>
+
+
+</table>
+
+<script>
+  function get_coa() {
+   $.ajax({
+      url: '/my_coa',
+      dataType: "json",
+      type: "POST",
+      data: { my_housing: $("#my_housing").val(), my_books: $("#my_books").val() },
+        my_transportation: $("#my_transportation").val() },
+        my_transportation: $("#my_other").val() },
+      success: function(result) { $("#my_coa").text(result); }
+      }
+   });
+}
+</script>
+

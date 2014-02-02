@@ -1,0 +1,124 @@
+<% provide(:title, @student.full_name) %>
+<h1> <%= @student.full_name %><br>
+<small><%= @package.college_name %></small></h1>
+<br>
+
+<table class="table">
+  <%= form_tag my_change_student_semester_package_path(@student, @package) do %>
+  <tr>
+    <th>Cost of Attendance</th>
+    <th>What <%=@package.college_name%> thinks it will cost</th>
+    <th>What you think it will cost</th>
+  </tr>
+  <tr>
+    <td>Tuition & Fees</td>
+    <td><%=number_to_currency(@package.tuition_and_fees)%></td>
+    <td><%=number_to_currency(@package.tuition_and_fees)%></td>
+  </tr>
+  <tr>
+    <td>Housing & Meals</td>
+    <td><%=number_with_precision(@package.housing_meals, precision: 2, delimiter: ",")%></td>
+    <td><%=text_field_tag :my_housing, @my_housing, id: "my_housing"%></td>
+  </tr>
+  <tr>
+    <td>Books</td>
+    <td><%=number_with_precision(@package.books, precision: 2, delimiter: ",")%></td>
+    <td><%=text_field_tag :my_books, @my_books, id: "my_books"%></td>
+  </tr>
+  <tr>
+    <td>Transportation</td>
+    <td><%=number_with_precision(@package.transportation, precision: 2, delimiter: ",")%></td>
+    <td><%=text_field_tag :my_transportation, @my_transportation, id: "my_transportation"%></td>
+  </tr>
+  <tr>
+    <td>Other Educational Costs</td>
+    <td><%=number_with_precision(@package.other, precision: 2, delimiter: ",")%></td>
+    <td><%=text_field_tag :my_other, @my_other, id: "my_other"%></td>
+  </tr>
+  </tr>
+  <tr>
+    <th>Total Cost of Attendance</th>
+    <th><%=number_to_currency(@package.coa)%></th>
+    <th><%=number_to_currency(@my_coa)%></th>
+  </tr>
+  </tr>
+  <tr>
+    <td>School Grants</td>
+    <td><%=number_with_precision(@package.school_grant, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(@package.school_grant, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Pell Grant</td>
+    <td><%=number_with_precision(@package.pell, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(@package.pell, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>State Grant</td>
+    <td><%=number_with_precision(@package.state_grant, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(@package.school_grant, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Other Scholarships</td>
+    <td><%=number_with_precision(@package.other_scholarship, precision: 2, delimiter: ",")%></td>
+    <td><%=text_field_tag :my_other_scholarship, @my_other_scholarship, id: "my_other_scholarship"%></td>
+  </tr>
+  <tr>
+    <th>Net Cost</th>
+    <th><%=number_to_currency(@package.net_cost)%></th>
+    <th><%=number_to_currency(@my_net_cost)%></th>
+  </tr>
+  <tr>
+    <td>Work Study</td>
+    <td><%=number_with_precision(@package.work_study, precision: 2, delimiter: ",")%></td>
+    <td><%=text_field_tag :my_work_study, @my_work_study%></td>
+  </tr>
+  <tr>
+    <td>Perkins Loan</td>
+    <td><%=number_with_precision(@package.perkins, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(@package.perkins, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Direct Federal Subsidized Loan (Stafford)</td>
+     <td><%=number_with_precision(@package.sub_stafford, precision: 2, delimiter: ",")%></td>
+     <td><%=number_with_precision(@package.sub_stafford, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Direct Federal Unsubsidized Loan (Stafford)</td>
+    <<td><%=number_with_precision(@package.unsub_stafford, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(@package.unsub_stafford, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <th>Total Loans</th>
+    <th><%=number_to_currency(@package.total_sub_loans)%></th>
+    <th><%=number_to_currency(@package.total_sub_loans)%></th>
+  </tr>
+  <tr>
+    <td>Parental Contribution</td>
+    <td><%=number_to_currency(@package.family_contribution)%></td>
+    <td><%=text_field_tag :my_family_contribution, @my_family_contribution%></td>
+  </tr>
+  <tr>
+    <th>Need Not Met</th>
+    <th><%=number_to_currency(@package.unmet_need)%></th>
+    <th><%=number_to_currency(@my_unmet_need)%></th>
+  </tr>
+</table>
+<%= submit_tag "See Effect of Changes", class: "btn btn-primary" %>
+<% end %>
+
+<script>
+  function get_coa() {
+   $.ajax({
+      url: '/my_coa',
+      dataType: "json",
+      type: "POST",
+      data: { my_housing: $("#my_housing").val(), my_books: $("#my_books").val() },
+        my_transportation: $("#my_transportation").val() },
+        my_transportation: $("#my_other").val() },
+      success: function(result) { $("#my_coa").text(result); }
+      }
+   });
+}
+
+</script>
+

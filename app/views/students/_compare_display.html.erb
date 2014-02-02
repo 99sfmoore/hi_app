@@ -1,0 +1,87 @@
+<%= link_to p.college_name, [s,p] %>
+
+<table class="table">
+  <tr>
+    <th>Cost of Attendance</th>
+    <th>School Estimate</th>
+    <th>Your Estimate</th>
+  </tr>
+  <tr>
+    <td>Tuition & Fees</td>
+    <td><%=number_to_currency(p.tuition_and_fees)%></td>
+    <td><%=number_to_currency(p.tuition_and_fees)%></td>
+  </tr>
+  <tr>
+    <td>Housing & Meals</td>
+    <td><%=number_with_precision(p.housing_meals, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.my_housing, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Books</td>
+    <td><%=number_with_precision(p.books, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.my_books, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Transportation</td>
+    <td><%=number_with_precision(p.transportation, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.my_transportation, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Other Educational Costs</td>
+    <td><%=number_with_precision(p.other, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.my_other, precision: 2, delimiter: ",")%></td>
+  </tr>
+  </tr>
+  <tr>
+    <th>Total Cost of Attendance</th>
+    <th><%=number_to_currency(p.coa)%></th>
+    <th><%=number_to_currency(p.my_coa)%></th>
+  </tr>
+  </tr>
+  <tr>
+    <td>Grants & Scholarships</td>
+    <td><%=number_with_precision(p.grants_scholarships, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.grants_scholarships, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <th>Net Cost</th>
+    <th><%=number_to_currency(p.net_cost)%></th>
+    <th><%=number_to_currency(p.my_net_cost)%></th>
+  </tr>
+  <tr>
+    <td>Work Study</td>
+    <td><%=number_with_precision(p.work_study, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.my_work_study, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Stafford & Perkins Loans</td>
+    <td><%=number_with_precision(p.total_sub_loans, precision: 2, delimiter: ",")%></td>
+    <td><%=number_with_precision(p.total_sub_loans, precision: 2, delimiter: ",")%></td>
+  </tr>
+  <tr>
+    <td>Parental Contribution</td>
+    <td><%=number_to_currency(p.family_contribution)%></td>
+    <td><%=number_to_currency(p.my_family_contribution)%></td>
+  </tr>
+  <tr>
+    <th>Need Not Met (Private Loan)</th>
+    <th><%=number_to_currency(p.unmet_need)%></th>
+    <th><%=number_to_currency(p.my_unmet_need)%></th>
+  </tr>
+  <tr>
+    <td class="strong">Total Debt Balance at Graduation</td>
+    <td class="strong" align="right"><%=number_to_currency(p.debt_balance)%></td>
+    <td class="strong" align="right"><%=number_to_currency(p.my_debt_balance)%></td>
+  </tr>
+  <tr>
+    <td class="strong">Projected Monthly Payment (20 years)</td>
+    <td class="strong" align="right"><%=number_to_currency(p.monthly_payment(20))%></td>
+    <td class="strong" align="right"><%=number_to_currency(p.my_monthly_payment(20))%></td>
+  </tr>
+  <tr>
+    <td class="strong">Projected Monthly Payment (15 years)</td>
+    <td class="strong" align="right"><%=number_to_currency(p.monthly_payment(15))%></td>
+    <td class="strong" align="right"><%=number_to_currency(p.my_monthly_payment(15))%></td>
+  </tr>
+
+</table>
